@@ -1,16 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
-import Gnb from './layout/gnb/gnb';
 import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home/Home'
 import ForYou from './pages/ForYou/ForYou'
+import Header from './Layouts/Header/Header'
 
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/foryou" element={<ForYou />} />
+      <Route element={<Header />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/foryou" element={<ForYou />} />
+      </Route>
     </Routes>
     // <div className="App">
     //   <Gnb />
