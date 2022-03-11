@@ -1,0 +1,50 @@
+.header{
+  width: 100%;
+  height: 138px;
+  /********************* header-main ************************/
+  &-main {
+    height: 96px;
+    background: #00c73c url(https://shopv.pstatic.net/web/cnsv/m/im/global/bg_gheader_v2.png) no-repeat;
+    background-size: 320px auto;
+    -webkit-background-size: 320px auto;
+    background-position: 100% 0;
+    &-menu {
+      display: flex;
+      justify-content: space-between;
+      .logo {
+        display: inline-block;
+        margin: 14px 8px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+      }
+      .material-icons-round {
+        margin: 12px 8px;
+        color: #fff;
+      }
+    }
+    &-input {
+      width: calc(100% - 8px);
+      height: 42px;
+      margin-left: 4px;
+      background-color: #fff;
+      display: flex;
+      justify-content: space-around;
+      input {
+        width: 100%;
+        border: 0;
+        outline: 0;
+        padding: 0 8px;
+        font-size: 16px;
+      }
+      .material-icons-outlined {
+        font-size: 28px;
+        margin: 8px;
+        color: #00c73c;
+      }
+    }
+  }
+  &-sub {
+    height: 42px;
+  }
+}
