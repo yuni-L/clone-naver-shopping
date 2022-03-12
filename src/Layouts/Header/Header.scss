@@ -44,7 +44,43 @@
       }
     }
   }
+  /********************* header-sub ************************/
   &-sub {
-    height: 42px;
+    height: 40px;
+    border-bottom: 1px solid #e5e5e5;
+    position: relative;
+    &-scroll {
+      width: calc(100% - 52px);
+      height: 40px;
+      padding-left: 12px;
+      overflow-x: visible;
+      overflow-y: hidden;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      ul {
+        list-style: none;
+        white-space: nowrap;
+        padding-left: 0px;
+        margin-top: 10px;
+      }
+      li {
+        display: inline-block;
+        margin-right: 12px;
+        a {
+          text-decoration : none;
+          color: #000;
+        }
+      }
+    }
+    &-arrow {
+      color: #00c73c;
+      font-size: 32px;
+      padding: 4px;
+      border-left: 1px solid #e5e5e5;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
   }
 }
