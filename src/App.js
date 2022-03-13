@@ -1,8 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 
+import Layout from './pages/Layout'
 import Home from './pages/Home/Home'
 import ForYou from './pages/ForYou/ForYou'
-import Header from './Layouts/Header/Header'
 
 import './App.css';
 
@@ -10,7 +10,7 @@ import './App.css';
 function App() {
   return (
     <Routes>
-      <Route element={<Header />}>
+      <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
         <Route path="/foryou" element={<ForYou />} />
       </Route>
