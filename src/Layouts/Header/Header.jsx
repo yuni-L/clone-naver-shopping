@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Outlet, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import './Header.scss';
 
@@ -31,6 +31,7 @@ const SUB_MENU = [
 
 const Header = () => {
   const [pathName, setPathName] = useState(null);
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
   
   useEffect(() => {
     setSubMenuActive(window.location.pathname);
@@ -39,39 +40,63 @@ const Header = () => {
   const setSubMenuActive = (pathname) => {
     setPathName(pathname);
   }
+
+  const openMenu = () => {
+    if (!isOpenMenu) {
+      document.querySelector('.header-sub-scroll').style.display = 'none';
+      document.querySelector('.header-sub-service').style.display = 'block';
+    } else {
+      document.querySelector('.header-sub-scroll').style.display = 'block';
+      document.querySelector('.header-sub-service').style.display = 'none';
+    }
+    setIsOpenMenu(!isOpenMenu);
+  }
+
   return (
-    <div>
-      <header className='header'>
-      {/* header-main start */}
-        <div className='header-main'>
-          <div className='header-main-menu'>
-            <span className='logo'>네이버 쇼핑 따라하기</span>
-            <span className='material-icons-round'>menu</span>
-          </div>
-          <div className='header-main-input'>
-            <input placeholder='상품검색'></input>
-            <span className='material-icons-outlined'>camera_alt</span>
-          </div>
+    <header className='header'>
+    {/* header-main start */}
+      <div className='header-main'>
+        <div className='header-main-menu'>
+          <span className='logo'>네이버 쇼핑 따라하기</span>
+          <span className='material-icons-round'>menu</span>
         </div>
-        {/* header-main end */}
-        <div className='header-sub'>
-          <div className='header-sub-scroll'>
+        <div className='header-main-input'>
+          <input placeholder='상품검색'></input>
+          <span className='material-icons-outlined'>camera_alt</span>
+        </div>
+      </div>
+      {/* header-main end */}
+      {/* header-sub start */}
+      <div className='header-sub'>
+        <div className='header-sub-scroll'>
+          <ul>
+            {SUB_MENU.map((menu, index) => (
+                <li key={index} className={pathName === menu.href ? 'isActive' : null}>
+                  <Link to={menu.href} onClick={() => {setSubMenuActive(menu.href)}}>{menu.name}</Link>
+                </li>
+            ))}
+          </ul>
+        </div>
+        <div className='header-sub-service'>
+          <span>서비스 바로가기</span>
+          <div className='header-sub-service-menus'>
             <ul>
               {SUB_MENU.map((menu, index) => (
-                  <li key={index} className={pathName === menu.href ? 'isActive' : null}>
-                    <Link to={menu.href} onClick={() => {setSubMenuActive(menu.href)}}>{menu.name}</Link>
-                  </li>
+                <li key={'menu' + index}>
+                  <Link to={menu.href} className={pathName === menu.href ? 'isActive' : null} onClick={() => {setSubMenuActive(menu.href); openMenu();}}>
+                    {menu.name}
+                  </Link>
+                </li>
               ))}
             </ul>
           </div>
-          <span className='header-sub-arrow material-icons'>keyboard_arrow_down</span>
-          {/* <span className='material-icons'>keyboard_arrow_up</span> */}
         </div>
-      </header>
-      <main>
-        <Outlet />
-      </main>
-    </div>
+        <span className='header-sub-arrow material-icons' onClick={() => {openMenu()}}>
+          { isOpenMenu ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }
+        </span>
+      </div>
+      {/* header-main sub */}
+    </header>
   )
 }
 
