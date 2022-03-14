@@ -30,6 +30,10 @@ const SUB_MENU = [
 ]
 
 const Header = () => {
+  const BACKGROUND = document.querySelector('#background');
+  const SCROLL_DIV = document.querySelector('.header-sub-scroll');
+  const SERVICE_DIV = document.querySelector('.header-sub-service');
+
   const [pathName, setPathName] = useState(null);
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   
@@ -41,20 +45,25 @@ const Header = () => {
     setPathName(pathname);
   }
 
+  /**
+   * todo background addEventListner 추가해야함. (중복없이 remove Event 필요)
+   */
   const openMenu = () => {
     if (!isOpenMenu) {
-      document.querySelector('.header-sub-scroll').style.display = 'none';
-      document.querySelector('.header-sub-service').style.display = 'block';
+      SCROLL_DIV.style.display = 'none';
+      SERVICE_DIV.style.display = 'block';
+      BACKGROUND.style.display = 'block';
     } else {
-      document.querySelector('.header-sub-scroll').style.display = 'block';
-      document.querySelector('.header-sub-service').style.display = 'none';
+      SCROLL_DIV.style.display = 'block';
+      SERVICE_DIV.style.display = 'none';
+      BACKGROUND.style.display = 'none';
     }
     setIsOpenMenu(!isOpenMenu);
   }
 
   return (
     <header className='header'>
-    {/* header-main start */}
+      {/* header-main start */}
       <div className='header-main'>
         <div className='header-main-menu'>
           <span className='logo'>네이버 쇼핑 따라하기</span>
@@ -96,6 +105,7 @@ const Header = () => {
         </span>
       </div>
       {/* header-main sub */}
+      <div id='background'></div>
     </header>
   )
 }

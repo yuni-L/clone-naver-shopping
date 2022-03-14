@@ -135,3 +135,10 @@
     }
   }
 }
+
+#background {
+  width: 100%;
+  height: calc(100vh - 137px);
+  background-color: rgba(0, 0, 0, .5);
+  display: none;
+}
