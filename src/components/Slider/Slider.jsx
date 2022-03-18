@@ -13,6 +13,25 @@ const sliderBanner = [
 
 const Slider = () => {
 
+  /**
+   * todo window 사이즈에 중심 맞추기
+   */
+  useEffect(() => {
+    const sliderCardDiv = document.querySelector('.slider-cards');
+    let count = 0;
+    const intervalId = setInterval(() => {
+      if (count > 5) {
+        count = 0;
+        sliderCardDiv.style.transform = `translate3d(-160px, 0px, 0px)`
+      }
+      count++;
+      sliderCardDiv.style.transform = `translate3d(${-160 + (-320 * count)}px, 0px, 0px)`
+    }, 1500);
+    return (() => {
+      clearInterval(intervalId);
+    });
+  }, []);
+
   const sliderCard = () => {
     const cardStyle = (src, index) => {
       return {
@@ -24,9 +43,10 @@ const Slider = () => {
     return (
       <div className="slider-cards">
       {
-        sliderBanner.map((slider, index) => (
+        [...sliderBanner, ...sliderBanner].map((slider, index) => (
           <div key={index} className="card" style={cardStyle(slider.src, index)}>
-            
+            <div className="card-main">{slider.mainTitle}</div>
+            <div className="card-sub">{slider.subTitle}</div>
           </div>
         ))
       }
