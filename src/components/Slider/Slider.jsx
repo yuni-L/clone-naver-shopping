@@ -15,18 +15,16 @@ const Slider = () => {
 
   /**
    * todo window 사이즈에 중심 맞추기
+   * todo 처음으로 돌아가서 한 번 멈추는 현상 수정
    */
   useEffect(() => {
     const sliderCardDiv = document.querySelector('.slider-cards');
     let count = 0;
     const intervalId = setInterval(() => {
-      if (count > 5) {
-        count = 0;
-        sliderCardDiv.style.transform = `translate3d(-160px, 0px, 0px)`
-      }
-      count++;
-      sliderCardDiv.style.transform = `translate3d(${-160 + (-320 * count)}px, 0px, 0px)`
-    }, 1500);
+      count > sliderBanner.length - 1 ? count = 0 : count++;
+      sliderCardDiv.style.transition = count === 0 ? '' : 'all .5s ease-out';
+      sliderCardDiv.style.transform = `translate3d(${-160 + (-320 * count)}px, 0px, 0px)`;
+      }, 1500);
     return (() => {
       clearInterval(intervalId);
     });
