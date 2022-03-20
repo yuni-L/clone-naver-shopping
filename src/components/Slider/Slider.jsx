@@ -19,6 +19,7 @@ const Slider = () => {
    * todo 슬라이더 한 칸 더 가는 현상
    * todo 가로스크롤대로 움직이기 (레이아웃 변경 필요, onDrag)
    * todo 함수로 나누기
+   * todo 코드 리팩토링 필요
    */
   useEffect(() => {
     const sliderCardDiv = document.querySelector('.slider-cards');
@@ -33,7 +34,6 @@ const Slider = () => {
       sliderCardDiv.style.transform = `translate3d(${-160 + (-320 * count)}px, 0px, 0px)`;
       // 바
       sliderBarEm.style.marginLeft = sliderBarDiv.offsetWidth / sliderBanner.length * count + 'px';
-      console.log(sliderBarEm.style.marginLeft, count)
       sliderBarEm.style.transition = count === 0 ? '' : 'all .5s ease-out';
       
       }, 1500);
