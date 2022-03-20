@@ -16,20 +16,36 @@ const Slider = () => {
   /**
    * todo window 사이즈에 중심 맞추기
    * todo 처음으로 돌아가서 한 번 멈추는 현상 수정
+   * todo 슬라이더 한 칸 더 가는 현상
+   * todo 가로스크롤대로 움직이기 (레이아웃 변경 필요, onDrag)
+   * todo 함수로 나누기
    */
   useEffect(() => {
     const sliderCardDiv = document.querySelector('.slider-cards');
+    const sliderBarDiv = document.querySelector('.slider-bar');
+    const sliderBarEm = document.querySelector('.slider-bar em');
+    sliderBarEm.style.width = sliderBarDiv.offsetWidth / sliderBanner.length + 'px';
     let count = 0;
     const intervalId = setInterval(() => {
+      // 슬라이더
       count > sliderBanner.length - 1 ? count = 0 : count++;
       sliderCardDiv.style.transition = count === 0 ? '' : 'all .5s ease-out';
       sliderCardDiv.style.transform = `translate3d(${-160 + (-320 * count)}px, 0px, 0px)`;
+      // 바
+      sliderBarEm.style.marginLeft = sliderBarDiv.offsetWidth / sliderBanner.length * count + 'px';
+      console.log(sliderBarEm.style.marginLeft, count)
+      sliderBarEm.style.transition = count === 0 ? '' : 'all .5s ease-out';
+      
       }, 1500);
     return (() => {
       clearInterval(intervalId);
     });
   }, []);
 
+
+  /**
+   * 슬라이더 카드
+   */
   const sliderCard = () => {
     const cardStyle = (src, index) => {
       return {
@@ -52,9 +68,21 @@ const Slider = () => {
     )
   }
 
+  /**
+   * 슬라이더 바
+   */
+  const sliderBar = () => {
+    return (
+      <div className="slider-bar">
+        <em>현재위치</em>
+      </div>
+    )
+  }
+
   return (
     <div className="slider">
       {sliderCard()}
+      {sliderBar()}
     </div>
   )
 }
