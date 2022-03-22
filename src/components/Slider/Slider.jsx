@@ -19,7 +19,7 @@ const Slider = () => {
    * todo 슬라이더 한 칸 더 가는 현상
    * todo 가로스크롤대로 움직이기 (레이아웃 변경 필요, onDrag)
    * todo 함수로 나누기
-   * todo 코드 리팩토링 필요
+   * todo 코드 리팩토링 필요 -> 효율적인 코드 방안 필요
    */
   useEffect(() => {
     const sliderCardDiv = document.querySelector('.slider-cards');
