@@ -38,6 +38,7 @@
     ]
   },
   "devDependencies": {
+    "@egjs/flicking-plugins": "^4.3.0",
     "@egjs/react-flicking": "^4.5.3",
     "sass": "^1.49.9",
     "sass-loader": "^12.6.0",

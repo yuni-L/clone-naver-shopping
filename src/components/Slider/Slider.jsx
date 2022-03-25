@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Flicking from "@egjs/react-flicking";
+import { AutoPlay } from "@egjs/flicking-plugins";
 import "@egjs/react-flicking/dist/flicking.css";
-// import "@egjs/react-flicking/dist/flicking-inline.css";
 
 import "./Slider.scss";
 
@@ -39,8 +39,10 @@ const sliderBanner = [
 ];
 
 const Slider = () => {
+  const plugins = [new AutoPlay({ duration: 2000, direction: "NEXT", stopOnHover: false })];
+
   return (
-      <Flicking circular={true} className="slider">
+      <Flicking circular={true} plugins={plugins} className="slider">
         {sliderBanner.map((slider, index) => (
           <div
             key={index}
