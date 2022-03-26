@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Flicking from "@egjs/react-flicking";
+import Flicking, { ViewportSlot } from "@egjs/react-flicking";
 import { AutoPlay } from "@egjs/flicking-plugins";
 import "@egjs/react-flicking/dist/flicking.css";
+import "@egjs/flicking-plugins/dist/pagination.css";
 
 import "./Slider.scss";
 
@@ -39,21 +40,32 @@ const sliderBanner = [
 ];
 
 const Slider = () => {
-  const plugins = [new AutoPlay({ duration: 2000, direction: "NEXT", stopOnHover: false })];
+  const plugins = [
+    new AutoPlay({ duration: 2000, direction: "NEXT", stopOnHover: false }),
+  ];
+
+  const test = (e) => {
+  }
 
   return (
-      <Flicking circular={true} plugins={plugins} className="slider">
+    <div className="slider">
+      <Flicking circular={true} plugins={plugins} onMove={test}>
         {sliderBanner.map((slider, index) => (
-          <div
-            key={index}
-            className="slider-card"
-            style={{ backgroundImage: `url('${slider.src}')` }}
-          >
-            <div className="slider-card-main">{slider.mainTitle}</div>
-            <div className="slider-card-sub">{slider.subTitle}</div>
+          <div key={index}  className="slider-flick">
+            <div
+              className="slider-flick-card"
+              style={{ backgroundImage: `url('${slider.src}')` }}
+            >
+              <div className="slider-flick-card-main">{slider.mainTitle}</div>
+              <div className="slider-flick-card-sub">{slider.subTitle}</div>
+            </div>
           </div>
         ))}
       </Flicking>
+      <div className="slider-bar">
+        <em>현재위치</em>
+      </div>
+    </div>
   );
 };
 
