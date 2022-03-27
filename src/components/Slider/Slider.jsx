@@ -41,10 +41,10 @@ const sliderBanner = [
 
 const Slider = () => {
   const plugins = [
-    new AutoPlay({ duration: 2000, direction: "NEXT", stopOnHover: false }),
+    // new AutoPlay({ duration: 2000, direction: "NEXT", stopOnHover: false }),
   ];
-
   const test = (e) => {
+    document.querySelector('.slider-bar em').style.transform = `translate(${e.axesEvent.pos.flick * 0.1}px)`
   }
 
   return (
