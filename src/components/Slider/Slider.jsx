@@ -40,16 +40,22 @@ const sliderBanner = [
 ];
 
 const Slider = () => {
+  useEffect(() => {
+    document.querySelector('em').style.width = `${300 / sliderBanner.length}px`
+  }, []);
   const plugins = [
-    // new AutoPlay({ duration: 2000, direction: "NEXT", stopOnHover: false }),
+    new AutoPlay({ duration: 2000, direction: "NEXT", stopOnHover: false }),
   ];
-  const test = (e) => {
-    document.querySelector('.slider-bar em').style.transform = `translate(${e.axesEvent.pos.flick * 0.1}px)`
+  /**
+   * todo margin left 주입 시, 첫 배너에서 스크롤이 0.2 px 오차가 있음
+   */
+  const MoveSlideScroll = (e) => {
+    document.querySelector('.slider-bar em').style.marginLeft = `${e.axesEvent.pos.flick / (sliderBanner.length + 1)}px`
   }
 
   return (
     <div className="slider">
-      <Flicking circular={true} plugins={plugins} onMove={test}>
+      <Flicking circular={true} plugins={plugins} onMove={MoveSlideScroll}>
         {sliderBanner.map((slider, index) => (
           <div key={index}  className="slider-flick">
             <div

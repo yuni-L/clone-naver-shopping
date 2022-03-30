@@ -25,7 +25,7 @@
     }
   }
   &-bar {
-    max-width: 305px;
+    width: 300px;
     height: 3px;
     margin: 0 auto;
     background-color: #dee1e4;
@@ -39,13 +39,4 @@
       background-color: #999;
     }
   }
-  // .flicking-pagination-bullet {
-  //   border-radius: 0px;
-  //   width: 30px;
-  //   height: 4px;
-  //   margin: 0px;
-  //   &-active {
-  //     background-color: #666;
-  //   }
-  // }
 }
