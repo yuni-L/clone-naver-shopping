@@ -41,11 +41,10 @@ const sliderBanner = [
 
 const Slider = () => {
   useEffect(() => {
-    document.querySelector('em').style.width = `${300 / sliderBanner.length}px`
+    const widthScrollWidth = document.querySelector('.slider-bar').clientWidth;
+    document.querySelector('em').style.width = `${widthScrollWidth / sliderBanner.length}px`
   }, []);
-  const plugins = [
-    new AutoPlay({ duration: 2000, direction: "NEXT", stopOnHover: false }),
-  ];
+  const plugins = [ new AutoPlay({ duration: 2000, direction: "NEXT", stopOnHover: false }) ];
   /**
    * todo margin left 주입 시, 첫 배너에서 스크롤이 0.2 px 오차가 있음
    */
