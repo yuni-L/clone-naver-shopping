@@ -1,0 +1,34 @@
+.recent {
+  background-color: #fff;
+  margin: 0 6px;
+  border: 1px solid #e1e4e7;
+  &-title {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 16px 0;
+    border-bottom: 1px solid #e1e4e7;
+      span {
+      background: #00c73c url(https://shopv.pstatic.net/web/cnsv/m/im/global/bg_gheader_v2.png) no-repeat;
+      background-position: 100% 0;
+      display: block;
+      width: 56px;
+      height: 14px;
+      font-size: 11px;
+      font-weight: lighter;
+      color: #fff;
+      padding: 0 2px;
+      margin: 0 auto 6px auto;
+    }
+  }
+  &-goods {
+    height: 129px;
+    &-none {
+      color: #666;
+      text-align: center;
+      display: inline-block;
+      width: 100%;
+      padding-top: 50px;
+    }
+  }
+}
